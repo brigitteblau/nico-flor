@@ -1,0 +1,64 @@
+.hero-section {
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+}
+
+.parallax-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -100;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.parallax-image {
+  position: absolute;
+  width: 120%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate3d(-20%, 10%, 0); /* parámetro ajustable para simular desplazamiento */
+}
+
+.hero-content {
+  z-index: 1;
+}
+
+.hero-subtitle {
+  letter-spacing: 0.2em;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.hero-names {
+  font-family: 'Great Vibes', cursive; /* o el que prefieras */
+  font-size: 3rem;
+  margin: 0;
+}
+
+.ampersand {
+  font-size: 2rem;
+  margin: 0.5rem 0;
+}
+
+.arrow-container {
+  margin-top: 2rem;
+}
+
+.arrow {
+  font-size: 2rem;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
