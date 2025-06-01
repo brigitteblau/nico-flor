@@ -1,0 +1,42 @@
+.confirmacion-section {
+  background-color: #e3e3e3;
+  text-align: center;
+  padding: 5rem 1rem;
+}
+
+.confirmacion-titulo {
+  letter-spacing: 0.1rem;
+  color: #2d2d2d;
+  margin-bottom: 1rem;
+}
+
+.confirmacion-subtitulo {
+  font-size: 1.125rem;
+  color: #3f3f3f;
+  margin-bottom: 2rem;
+}
+
+.confirmacion-boton {
+  background-color: #c5ad95;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.confirmacion-boton:hover {
+  filter: brightness(110%);
+}
+
+.agradecimiento {
+  background-color: #b8bfbb;
+  color: white;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  font-size: 1rem;
+  font-family: Georgia, serif;
+}

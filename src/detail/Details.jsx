@@ -1,13 +1,16 @@
+
+
 import React from 'react';
 import './datail.css';
+import { MapPin } from 'lucide-react';
 
 export const Details = () => {
   return (
     <section className="details-section">
       <div className="detail-block">
-        {/* Ícono sinagoga estilo templo */}
+        {/* Ícono sinagoga */}
         <div className="detail-icon" aria-hidden="true">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M3 21V9l9-6 9 6v12" />
             <path d="M9 21V12h6v9" />
             <path d="M3 13h18" />
@@ -26,14 +29,15 @@ export const Details = () => {
           target="_blank" 
           rel="noopener noreferrer"
         >
+          <MapPin size={18} style={{ marginRight: '0.5rem' }} />
           LLEGAR A LA CEREMONIA
         </a>
       </div>
 
       <div className="detail-block">
-        {/* Ícono copas brindando */}
+        {/* Ícono copas */}
         <div className="detail-icon" aria-hidden="true">
-          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#1f1f1f" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
             <path d="M8 22c0-2-1-4-3-4h10c-2 0-3 2-3 4" />
             <path d="M8 14s1-1 2-1 2 1 2 1" />
             <path d="M16 14s-1-1-2-1-2 1-2 1" />
@@ -59,6 +63,7 @@ export const Details = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
+          <MapPin size={18} style={{ marginRight: '0.5rem' }} />
           LLEGAR A LA FIESTA
         </a>
       </div>

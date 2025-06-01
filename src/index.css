@@ -4,4 +4,8 @@
   --color-text: #e6e5e5;
   --color-muted: #e9e6e6;
   --font-main: 'Georgia', serif;
+  --button-bg: #c5ad95;
+}
+body{
+  font-family: Arial, Helvetica, sans-serif;
 }

@@ -14,6 +14,18 @@ min-width: 100%;
   text-align: center;
   overflow: hidden;
 }
+.bh-hebrew {
+  position: absolute;
+  top: 1.5rem;
+  right: 2rem;
+  font-size: 1.2rem;
+  font-weight: 400;
+  font-family: 'Georgia', serif;
+  color: white;
+  opacity: 0.85;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  direction: rtl;
+}
 
 .hero-overlay {
   position: absolute;
