@@ -4,39 +4,23 @@ import { Countdown } from './countdown/Countdown';
 import { OurStory } from './story/OurStory';
 import { Details } from './detail/Details';
 import { Confirmacion } from './confirmation/Confirmacion';
-import './App.css';
+import './App.css'; // asegurate de tener este archivo
 
 function App() {
-  const [visibleSections, setVisibleSections] = useState([]);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const delays = [0, 500, 1000, 1500, 2000]; // tiempo entre apariciones
-    const sectionKeys = ['hero', 'countdown', 'details', 'ourstory', 'confirmacion'];
-
-    sectionKeys.forEach((key, index) => {
-      setTimeout(() => {
-        setVisibleSections(prev => [...prev, key]);
-      }, delays[index]);
-    });
+    // Delay corto para una entrada más natural
+    setTimeout(() => setIsVisible(true), 200);
   }, []);
 
   return (
-    <div className="app-container">
-      <div className={`fade-section ${visibleSections.includes('hero') ? 'visible' : ''}`}>
-        <Hero />
-      </div>
-      <div className={`fade-section ${visibleSections.includes('countdown') ? 'visible' : ''}`}>
-        <Countdown />
-      </div>
-      <div className={`fade-section ${visibleSections.includes('details') ? 'visible' : ''}`}>
-        <Details />
-      </div>
-      <div className={`fade-section ${visibleSections.includes('ourstory') ? 'visible' : ''}`}>
-        <OurStory />
-      </div>
-      <div className={`fade-section ${visibleSections.includes('confirmacion') ? 'visible' : ''}`}>
-        <Confirmacion />
-      </div>
+    <div className={`app-container ${isVisible ? 'app-visible' : ''}`}>
+      <Hero />
+      <Countdown />
+      <Details />
+      <OurStory />
+      <Confirmacion />
     </div>
   );
 }
