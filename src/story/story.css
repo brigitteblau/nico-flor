@@ -1,0 +1,116 @@
+
+        .our-story {
+          padding: 6rem 2rem;
+          background: white;
+        }
+
+        .story-container {
+          max-width: 1200px;
+          margin: 0 auto;
+        }
+
+        .story-title {
+          font-family: 'Georgia', serif;
+          font-size: 2.5rem;
+          text-align: center;
+          color: #333;
+          margin-bottom: 4rem;
+          font-weight: 300;
+        }
+
+        .story-content {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: center;
+        }
+
+        .story-text p {
+          font-family: 'Georgia', serif;
+          font-size: 1.1rem;
+          line-height: 1.8;
+          margin-bottom: 1.5rem;
+          color: #555;
+          text-align: justify;
+        }
+
+        .story-image {
+          text-align: center;
+        }
+
+        .couple-photo {
+          background: linear-gradient(135deg, #ff6b9d, #667eea);
+          width: 300px;
+          height: 300px;
+          border-radius: 50%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto;
+          color: white;
+          box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+          position: relative;
+          overflow: hidden;
+        }
+
+        .couple-photo::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts2" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse"><text x="7.5" y="12" font-size="8" fill="rgba(255,255,255,0.1)" text-anchor="middle">♥</text></pattern></defs><rect width="100%" height="100%" fill="url(%23hearts2)"/></svg>') repeat;
+          animation: rotate 30s infinite linear;
+        }
+
+        @keyframes rotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .photo-placeholder {
+          margin-bottom: 1rem;
+          z-index: 2;
+          position: relative;
+        }
+
+        .couple-names {
+          font-family: 'Georgia', serif;
+          font-size: 1.2rem;
+          font-weight: 300;
+          letter-spacing: 2px;
+          z-index: 2;
+          position: relative;
+          margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+          .story-content {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+          }
+
+          .couple-photo {
+            width: 250px;
+            height: 250px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .our-story {
+            padding: 4rem 1rem;
+          }
+
+          .couple-photo {
+            width: 200px;
+            height: 200px;
+          }
+
+          .story-text p {
+            font-size: 1rem;
+          }
+        }
+  
