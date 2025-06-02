@@ -3,7 +3,7 @@ import { Hero } from './hero/Hero';
 import { Countdown } from './countdown/Countdown';
 import { OurStory } from './story/OurStory';
 import { Details } from './detail/Details';
-import { Confirmacion } from './confirmation/Confirmacion';
+import { Confirmacion } from './Confirmation/Confirmacion';
 import './App.css'; 
 
 function App() {
