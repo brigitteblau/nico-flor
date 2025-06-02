@@ -4,13 +4,13 @@ import { Countdown } from './countdown/Countdown';
 import { OurStory } from './story/OurStory';
 import { Details } from './detail/Details';
 import { Confirmacion } from './confirmation/Confirmacion';
-import './App.css'; // asegurate de tener este archivo
+import './App.css'; 
 
 function App() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // Delay corto para una entrada más natural
+   
     setTimeout(() => setIsVisible(true), 200);
   }, []);
 

@@ -1,5 +1,8 @@
 .confirmacion-section {
-  background-color: #e3e3e3;
+  background-color:rgba(255, 255, 255, 0.5); 
+background-image: url('/background/1.jpg');
+
+
   text-align: center;
   padding: 5rem 1rem;
 }
@@ -24,19 +27,54 @@
   padding: 0.75rem 2rem;
   border-radius: 9999px;
   text-decoration: none;
-  display: inline-block;
+ 
   transition: all 0.3s ease;
+
+   background-color: #d4c0ab;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .confirmacion-boton:hover {
-  filter: brightness(110%);
+  color:  #d4c0ab;
+border: 4px #d4c0ab solid ;
+  background-color: white;
 }
 
 .agradecimiento {
-  background-color: #b8bfbb;
+  background-color: var(--color-bg);
   color: white;
   text-align: center;
-  padding: 1.5rem 1rem;
+  padding: 50px 0;
   font-size: 1rem;
-  font-family: Georgia, serif;
+}
+
+.footer {
+  background-color: rgb(186, 185, 185);
+  color: white;
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 1rem;
+
+  gap: 1.5rem;
+}
+
+.footer a {
+  color: white;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.footer a:hover {
+  transform: scale(1.1);
+  opacity: 0.8;
+}
+.p{
+  gap: 20px;
+  display: flex;
+  justify-content: center;
 }

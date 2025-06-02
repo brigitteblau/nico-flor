@@ -1,9 +1,9 @@
 :root {
-  --color-bg: #b8bfbb;
+  --color-bg: #688876;
   --color-primary: #e3e3e3;
   --color-text: #e6e5e5;
   --color-muted: #e9e6e6;
-  --font-main: 'Georgia', serif;
+  --font-main: Arial, Helvetica, sans-serif;
   --button-bg: #c5ad95;
 }
 body{

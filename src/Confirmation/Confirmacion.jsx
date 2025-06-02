@@ -1,5 +1,6 @@
 import React from 'react';
 import './confirm.css';
+import { Mail, Linkedin, Github } from 'lucide-react';
 
 export const Confirmacion = () => {
   return (
@@ -22,9 +23,22 @@ export const Confirmacion = () => {
       <div className="agradecimiento">
         ¡Gracias por acompañarnos en este momento tan importante!
       </div>
-       <div className="agradecimiento">
-        Brigitte Blau desarrolladora creativa 
+      <div className="footer">
+     <p>Brigitte Blau</p>
+  <div className="p">
+ <a href="mailto:brigitteyaelblau@gmail.com" target="_blank" rel="noopener noreferrer">
+        <Mail size={20} />
+      </a>
+      <a href="https://www.linkedin.com/in/brigitteblau" target="_blank" rel="noopener noreferrer">
+        <Linkedin size={20} />
+      </a>
+      <a href="https://github.com/brigitteblau" target="_blank" rel="noopener noreferrer">
+        <Github size={20} />
+      </a>
+</div>
       </div>
+    
+
     </>
   );
 };
