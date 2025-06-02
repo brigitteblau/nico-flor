@@ -1,5 +1,7 @@
 // OurStory.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { supabase } from './supabaseClient';
+import { v4 as uuidv4 } from 'uuid'; // instalá con: npm i uuid
 import { Heart, X, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import './story.css';
 
@@ -7,6 +9,37 @@ export const OurStory = () => {
   const [modalImage, setModalImage] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [favorites, setFavorites] = useState(new Set());
+
+  const [likesCount, setLikesCount] = useState({});
+const [sessionId, setSessionId] = useState(null); 
+
+useEffect(() => {
+  let storedId = localStorage.getItem('session_id');
+  if (!storedId) {
+    storedId = uuidv4();
+    localStorage.setItem('session_id', storedId);
+  }
+  setSessionId(storedId);
+  fetchLikes();
+}, []);
+
+const fetchLikes = async () => {
+  const { data, error } = await supabase
+    .from('likes')
+    .select('photo_index');
+
+  if (error) {
+    console.error('Error fetching likes:', error);
+    return;
+  }
+
+  const counts = {};
+  data.forEach(({ photo_index }) => {
+    counts[photo_index] = (counts[photo_index] || 0) + 1;
+  });
+
+  setLikesCount(counts);
+};
 
   const photos = [
     { 
@@ -64,16 +97,38 @@ export const OurStory = () => {
     setModalImage(photos[newIndex]);
   };
 
-  const toggleFavorite = (index, e) => {
-    e.stopPropagation();
-    const newFavorites = new Set(favorites);
-    if (newFavorites.has(index)) {
-      newFavorites.delete(index);
-    } else {
-      newFavorites.add(index);
-    }
-    setFavorites(newFavorites);
-  };
+ const toggleFavorite = async (index, e) => {
+  e.stopPropagation();
+  const newFavorites = new Set(favorites);
+  const alreadyLiked = newFavorites.has(index);
+
+  if (alreadyLiked) {
+    await supabase
+      .from('likes')
+      .delete()
+      .eq('photo_index', index)
+      .eq('session_id', sessionId);
+
+    newFavorites.delete(index);
+    setLikesCount((prev) => ({
+      ...prev,
+      [index]: (prev[index] || 1) - 1,
+    }));
+  } else {
+    await supabase.from('likes').insert([
+      { photo_index: index, session_id: sessionId },
+    ]);
+
+    newFavorites.add(index);
+    setLikesCount((prev) => ({
+      ...prev,
+      [index]: (prev[index] || 0) + 1,
+    }));
+  }
+
+  setFavorites(newFavorites);
+};
+
 
   const downloadImage = (src, caption) => {
     const link = document.createElement('a');
@@ -112,7 +167,11 @@ export const OurStory = () => {
                 />
               </button>
             </div>
-            <div className="gallery-caption">{photo.caption}</div>
+          <div className="gallery-caption">
+  {photo.caption}
+  {/* <span className="likes-count">❤️ {likesCount[index] || 0}</span> */}
+</div>
+
           </div>
         ))}
       </div>
