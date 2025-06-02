@@ -2,7 +2,7 @@
 
 .story-container {
   padding: 40px 20px;
-  background-color: #fff;
+  /* background-color: #b78e8e; */
   font-family: 'Poppins', sans-serif;
 }
 
@@ -33,6 +33,7 @@
   overflow: hidden;
   cursor: pointer;
   background-color: #f9f9f9;
+/* border: 3px #b78e8e solid ; */
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -264,4 +265,49 @@
   .next-btn {
     right: 10px;
   }
+}
+
+.comments-section {
+  margin-top: 20px;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+.comments-list {
+  max-height: 150px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.comment-item {
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: #444;
+}
+
+.comment-form {
+  display: flex;
+  gap: 8px;
+}
+
+.comment-input {
+  flex: 1;
+  padding: 8px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.comment-submit {
+  padding: 8px 12px;
+  font-size: 14px;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.comment-submit:hover {
+  background-color: #ddd;
 }
