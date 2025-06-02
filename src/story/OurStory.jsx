@@ -11,6 +11,8 @@ export const OurStory = () => {
   const [likedByUser, setLikedByUser] = useState(new Set());
   const [sessionId, setSessionId] = useState(null);
 const totalLikes = Object.values(likesCount).reduce((sum, count) => sum + count, 0);
+const [comments, setComments] = useState([]);
+const [newComment, setNewComment] = useState('');
 
   // Crear o recuperar session_id
   useEffect(() => {
@@ -80,10 +82,27 @@ const totalLikes = Object.values(likesCount).reduce((sum, count) => sum + count,
     { src: '/img/7.jpeg', caption: 'Juntos, hasta el atardecer', description: 'Cada atardecer contigo es la promesa de un mañana mejor' },
   ];
 
-  const openModal = (photo, index) => {
-    setModalImage(photo);
-    setCurrentIndex(index);
-  };
+const openModal = async (photo, index) => {
+  setModalImage(photo);
+  setCurrentIndex(index);
+  await fetchComments(index);
+};
+
+const fetchComments = async (index) => {
+  const { data, error } = await supabase
+    .from('comments')
+    .select('*')
+    .eq('photo_index', index)
+    .order('created_at', { ascending: true });
+
+  if (error) {
+    console.error('Error al traer comentarios:', error);
+    return;
+  }
+
+  setComments(data);
+};
+
 
   const closeModal = () => {
     setModalImage(null);
@@ -107,6 +126,30 @@ const totalLikes = Object.values(likesCount).reduce((sum, count) => sum + count,
     link.click();
     document.body.removeChild(link);
   };
+
+  const handleCommentSubmit = async (e) => {
+  e.preventDefault();
+  if (newComment.trim() === '') return;
+
+  const { error } = await supabase.from('comments').insert([
+    {
+      photo_index: currentIndex,
+      session_id: sessionId,
+      content: newComment.trim(),
+    },
+  ]);
+
+  if (!error) {
+    setComments([...comments, {
+      photo_index: currentIndex,
+      session_id: sessionId,
+      content: newComment.trim(),
+      created_at: new Date().toISOString()
+    }]);
+    setNewComment('');
+  }
+};
+
 
   return (
     <div className="story-container">
@@ -167,6 +210,27 @@ const totalLikes = Object.values(likesCount).reduce((sum, count) => sum + count,
                   Descargar
                 </button>
               </div>
+              <div className="comments-section">
+  <div className="comments-list">
+    {comments.map((comment, idx) => (
+      <div key={idx} className="comment-item">
+        <span className="comment-text">{comment.content}</span>
+      </div>
+    ))}
+  </div>
+
+  <form className="comment-form" onSubmit={handleCommentSubmit}>
+    <input
+      type="text"
+      value={newComment}
+      onChange={(e) => setNewComment(e.target.value)}
+      placeholder="Escribí un comentario..."
+      className="comment-input"
+    />
+    <button type="submit" className="comment-submit">Publicar</button>
+  </form>
+</div>
+
             </div>
           </div>
         </div>
