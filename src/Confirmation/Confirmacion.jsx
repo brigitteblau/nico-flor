@@ -29,7 +29,7 @@ export const Confirmacion = () => {
  <a href="mailto:brigitteyaelblau@gmail.com" target="_blank" rel="noopener noreferrer">
         <Mail size={20} />
       </a>
-      <a href="www.linkedin.com/in/brigitte-blau-17567835b" target="_blank" rel="noopener noreferrer">
+      <a href="https://linkedin.com/in/brigitte-blau-17567835b" target="_blank" rel="noopener noreferrer">
         <Linkedin size={20} />
       </a>
       <a href="https://github.com/brigitteblau" target="_blank" rel="noopener noreferrer">
