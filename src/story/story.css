@@ -1,9 +1,7 @@
-/* story.css */
-
 .story-container {
   padding: 40px 20px;
-  /* background-color: #b78e8e; */
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-main);
+  background-color: var(--color-bg);
 }
 
 .story-header {
@@ -13,15 +11,15 @@
 
 .story-title {
   font-size: 28px;
-  font-weight: 500;
-  color: #333;
+  font-weight: 600;
+  color: var(--color-text);
   margin: 0;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
 }
 
 .story-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
   max-width: 1200px;
   margin: 0 auto;
@@ -32,18 +30,13 @@
   border-radius: 12px;
   overflow: hidden;
   cursor: pointer;
-  background-color: #f9f9f9;
-/* border: 3px #b78e8e solid ; */
+  background-color: var(--color-primary);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .gallery-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
-
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
 .gallery-image {
@@ -55,52 +48,50 @@
 
 .gallery-overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, transparent 50%, rgba(0,0,0,0.7) 100%);
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent 50%, rgba(0,0,0,0.6));
   opacity: 0;
   transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover .gallery-overlay {
+  opacity: 1;
 }
 
 .favorite-btn {
   position: absolute;
   top: 10px;
   right: 10px;
-  background: rgba(255,255,255,0.2);
-  border: none;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(8px);
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border: none;
   cursor: pointer;
-  backdrop-filter: blur(10px);
   transition: background 0.3s ease;
 }
 
 .favorite-btn:hover {
-  background: rgba(255,255,255,0.3);
+  background: rgba(255, 255, 255, 0.3);
 }
 
 .gallery-caption {
-  padding: 15px;
+  padding: 10px;
   font-size: 14px;
-  font-weight: 500;
-  color: #555;
   text-align: center;
+  color: var(--color-text);
 }
 
-/* Modal Styles */
+/* Modal */
 .modal-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,112 +100,78 @@
 }
 
 .modal-content {
-  position: relative;
-  background-color: #fff;
-  border-radius: 12px;
+  background-color: var(--color-primary);
+  border-radius: 16px;
   max-width: 800px;
   width: 100%;
   max-height: 90vh;
-  overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 }
 
 .modal-image {
   width: 100%;
-  max-height: 50vh;
+  max-height: 55vh;
   object-fit: contain;
-  background-color: #f5f5f5;
-  flex-shrink: 0;
+  background-color: var(--color-muted);
 }
 
 .modal-info {
   padding: 20px;
   flex: 1;
   overflow-y: auto;
-  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .modal-title {
   font-size: 20px;
   font-weight: 600;
-  color: #333;
-  margin: 0 0 10px 0;
+  color: var(--color-bg);
+  margin: 0;
 }
 
 .modal-description {
   font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-  margin: 0 0 20px 0;
+  color: #444;
+  line-height: 1.6;
 }
 
 .modal-actions {
   display: flex;
   gap: 10px;
-  margin-bottom: 15px;
   flex-wrap: wrap;
 }
 
 .action-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 8px;
   padding: 8px 16px;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  background-color: #fff;
-  cursor: pointer;
   font-size: 14px;
-  color: #666;
-  transition: all 0.3s ease;
-  white-space: nowrap;
+  color: #2b2b2b;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
 .action-btn:hover {
-  background-color: #f5f5f5;
-  border-color: #ccc;
+  background-color: #b99c81;
 }
 
-.nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgba(255,255,255,0.9);
-  border: none;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  z-index: 10;
-  transition: background 0.3s ease;
-}
-
-.nav-btn:hover {
-  background-color: rgba(255,255,255,1);
-}
-
-.prev-btn {
-  left: 20px;
-}
-
-.next-btn {
-  right: 20px;
-}
-
+.nav-btn,
 .close-btn {
   position: absolute;
-  top: 15px;
-  right: 15px;
-  background-color: rgba(255,255,255,0.9);
-  border: none;
+  background-color: rgba(255, 255, 255, 0.9);
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -223,297 +180,117 @@
   transition: background 0.3s ease;
 }
 
+.nav-btn:hover,
 .close-btn:hover {
-  background-color: rgba(255,255,255,1);
+  background-color: #fff;
 }
+
+.prev-btn { left: 15px; top: 50%; transform: translateY(-50%); }
+.next-btn { right: 15px; top: 50%; transform: translateY(-50%); }
+.close-btn { top: 15px; right: 15px; }
 
 .favorites-counter {
   position: fixed;
   bottom: 20px;
   right: 20px;
   background-color: #fff;
-  padding: 10px 15px;
+  padding: 8px 14px;
   border-radius: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   font-size: 14px;
-  font-weight: 500;
+  color: #333;
 }
 
+/* Comentarios */
 .comments-section {
-  margin-top: 20px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #ccc;
   padding-top: 15px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  gap: 10px;
 }
 
 .comments-list {
-  max-height: 120px;
+  max-height: 130px;
   overflow-y: auto;
-  margin-bottom: 15px;
   flex: 1;
-  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .comment-item {
-  margin-bottom: 8px;
   font-size: 14px;
-  color: #444;
+  color: dark;
   line-height: 1.4;
-  word-wrap: break-word;
+  word-break: break-word;
 }
 
 .comment-form {
   display: flex;
+  flex-direction: column;
   gap: 8px;
-  flex-shrink: 0;
+}
+ .comment-input {
+  padding: 12px 16px;
+  font-size: 14px;
+  border: 1px solid #b6b5b5;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 600px;
+  background-color: #cccbcb;
+  color: var(--color-text);
+  font-family: var(--font-main);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .comment-input {
-  flex: 1;
   padding: 10px 12px;
   font-size: 14px;
   border: 1px solid #ccc;
   border-radius: 6px;
-  min-width: 0;
+  width: 80%;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.comment-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px #a1a1a1;
+}
+
+
 .comment-submit {
+  background-color: var(--button-bg);
+  border: none;
+  border-radius: 6px;
   padding: 10px 16px;
   font-size: 14px;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  color: #2b2b2b;
   cursor: pointer;
-  transition: all 0.3s ease;
-  white-space: nowrap;
-  flex-shrink: 0;
+  transition: background 0.3s ease;
+  align-self: flex-start;
 }
 
 .comment-submit:hover {
-  background-color: #ddd;
+  background-color: #b99c81;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .story-container {
-    padding: 20px 10px;
-  }
-  
-  .story-title {
-    font-size: 24px;
-    letter-spacing: 1px;
-  }
-  
-  .story-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 15px;
-  }
-  
-  .gallery-image {
-    height: 150px;
-  }
-  
-  .modal-overlay {
-    padding: 10px;
-  }
-  
-  .modal-content {
-    max-height: 95vh;
-    border-radius: 8px;
-  }
-  
-  .modal-image {
-    max-height: 40vh;
-  }
-  
-  .modal-info {
-    padding: 15px;
-  }
-  
-  .modal-title {
-    font-size: 18px;
-  }
-  
-  .modal-description {
-    font-size: 13px;
-  }
-  
-  .modal-actions {
-    gap: 8px;
-  }
-  
-  .action-btn {
-    padding: 6px 12px;
-    font-size: 13px;
-  }
-  
-  .nav-btn {
-    width: 40px;
-    height: 40px;
-  }
-  
-  .prev-btn {
-    left: 10px;
-  }
-  
-  .next-btn {
-    right: 10px;
-  }
-  
-  .close-btn {
-    width: 35px;
-    height: 35px;
-    top: 10px;
-    right: 10px;
-  }
-  
-  .favorites-counter {
-    bottom: 15px;
-    right: 15px;
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-  
-  .comments-section {
-    margin-top: 15px;
-    padding-top: 12px;
-  }
-  
-  .comments-list {
-    max-height: 100px;
-    margin-bottom: 12px;
-  }
-  
-  .comment-item {
-    font-size: 13px;
-    margin-bottom: 6px;
-  }
-  
-  .comment-input {
-    padding: 8px 10px;
-    font-size: 13px;
-  }
-  
-  .comment-submit {
-    padding: 8px 12px;
-    font-size: 13px;
-  }
+  .story-title { font-size: 24px; }
+  .gallery-image { height: 160px; }
+  .modal-image { max-height: 40vh; }
 }
 
 @media (max-width: 480px) {
-  .story-container {
-    padding: 15px 8px;
-  }
-  
-  .story-title {
-    font-size: 20px;
-  }
-  
-  .story-gallery {
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  
-  .gallery-image {
-    height: 120px;
-  }
-  
-  .gallery-caption {
-    padding: 10px;
-    font-size: 12px;
-  }
-  
-  .modal-overlay {
-    padding: 5px;
-  }
-  
-  .modal-content {
-    border-radius: 6px;
-  }
-  
-  .modal-image {
-    max-height: 35vh;
-  }
-  
-  .modal-info {
-    padding: 12px;
-  }
-  
-  .modal-title {
-    font-size: 16px;
-  }
-  
-  .modal-description {
-    font-size: 12px;
-  }
-  
-  .modal-actions {
-    gap: 6px;
-    margin-bottom: 10px;
-  }
-  
-  .action-btn {
-    padding: 5px 10px;
-    font-size: 12px;
-    gap: 5px;
-  }
-  
-  .nav-btn {
-    width: 35px;
-    height: 35px;
-  }
-  
-  .prev-btn {
-    left: 5px;
-  }
-  
-  .next-btn {
-    right: 5px;
-  }
-  
-  .close-btn {
-    width: 30px;
-    height: 30px;
-    top: 8px;
-    right: 8px;
-  }
-  
-  .favorites-counter {
-    bottom: 10px;
-    right: 10px;
-    padding: 6px 10px;
-    font-size: 12px;
-  }
-  
-  .comments-section {
-    margin-top: 12px;
-    padding-top: 10px;
-  }
-  
-  .comments-list {
-    max-height: 80px;
-    margin-bottom: 10px;
-  }
-  
-  .comment-item {
-    font-size: 12px;
-    margin-bottom: 5px;
-  }
-  
-  .comment-form {
-    gap: 6px;
-  }
-  
-  .comment-input {
-    padding: 6px 8px;
-    font-size: 12px;
-  }
-  
-  .comment-submit {
-    padding: 6px 10px;
-    font-size: 12px;
-  }
+  .story-title { font-size: 20px; }
+  .gallery-image { height: 130px; }
+  .modal-info { padding: 12px; }
+  .modal-title { font-size: 16px; }
+  .modal-description { font-size: 13px; }
+  .action-btn { padding: 6px 12px; font-size: 12px; }
+  .comment-input, .comment-submit { font-size: 12px; padding: 8px 10px; }
+  .close-btn, .nav-btn { width: 32px; height: 32px; }
+  .favorites-counter { font-size: 12px; padding: 6px 10px; }
 }

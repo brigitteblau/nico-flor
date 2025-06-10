@@ -3,6 +3,9 @@ import { supabase } from './supabaseClient';
 import { v4 as uuidv4 } from 'uuid';
 import { Heart, X, ChevronLeft, ChevronRight, Download } from 'lucide-react';
 import './story.css';
+import Zoom from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
+
 
 export const OurStory = () => {
   const [modalImage, setModalImage] = useState(null);
@@ -192,7 +195,15 @@ const fetchComments = async (index) => {
             <button className="close-btn" onClick={closeModal}>
               <X size={24} />
             </button>
-            <img src={modalImage.src} alt={modalImage.caption} className="modal-image" />
+            <Zoom>
+  <img
+    src={modalImage.src}
+    alt={modalImage.caption}
+    className="modal-image"
+    style={{ touchAction: 'none' }}
+  />
+</Zoom>
+
             <div className="modal-info">
               <h3 className="modal-title">{modalImage.caption}</h3>
               <p className="modal-description">{modalImage.description}</p>
@@ -224,7 +235,7 @@ const fetchComments = async (index) => {
       type="text"
       value={newComment}
       onChange={(e) => setNewComment(e.target.value)}
-      placeholder="Escribí un comentario..."
+      placeholder="Deja un comentario con tu nombre"
       className="comment-input"
     />
     <button type="submit" className="comment-submit">Publicar</button>
