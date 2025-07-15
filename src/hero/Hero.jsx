@@ -6,8 +6,6 @@ export const Hero = () => {
   return (
     <section className="hero">
       <div className="hero-overlay"></div>
-
-
       <div className="hero-content">
     <span className="bh-hebrew">ב״ה</span>
         <div className="names-container">
